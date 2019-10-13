@@ -16,8 +16,8 @@ minimal_mistakes_skin    : "default" # "air", "aqua", "contrast", "dark", "dirt"
 
 # Site Settings
 locale                   : "en-US"
-title                    : ""
-title_separator          : ""
+title                    : "mokpolar"
+title_separator          : "-"
 subtitle                 : # site tagline that appears below site title in masthead
 name                     : "IT초보"
 description              : "어쩌다 IT를 시작하게 된 문과생의 학습 기록용 블로그"
