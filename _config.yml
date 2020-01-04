@@ -4,11 +4,11 @@ gems:
   - jekyll-paginate
 
 # Site settings
-title: "Data Storyteller"
+title: "mokpolar"
 description: > # this means to ignore newlines until "email:"
-   Dreamgonfly's blog
+   mokpolar's blog
 
-email: dreamgonfly@gmail.com
+email: email@gmail.com
 #blog logo
 logo: "/assets/images/dragonfly_moon.jpg"
 float_logo: false # true, false (default)
@@ -16,19 +16,19 @@ float_logo: false # true, false (default)
 # blog cover
 cover: "/assets/images/cA4aKEIPQrerBnp1yGHv_IMG_9534-3-2.jpg"
 
-name: 'Dreamgonfly'
-author: 'Dreamgonfly'
+name: 'mokpolar'
+author: 'mokpolar'
 author_image: "/assets/images/dragonfly_moon.jpg"
 
 paginate:	5
 
-url: "https://dreamgonfly.github.io" # the base hostname & protocol for your site
+url: "https://mokpolar.github.io" # the base hostname & protocol for your site
 baseurl: ""
 #used to display twitter cards
-twitter_handle: '@dreamgonfly'
+twitter_handle: #'@dreamgonfly'
 
 #fill in disqus shortname to use disqus
-disqus: dreamgonfly-blog
+disqus: #dreamgonfly-blog
 
 google_analytics: UA-91026007-2
 
@@ -37,19 +37,19 @@ social:
   - icon:	twitter
     url:	#https://twitter.com/dirkfabisch
     desc: #Follow me on twitter
-    share_url: http://twitter.com/share
+    share_url: #http://twitter.com/share
     share_title: ?text=
     share_link: "&amp;url="
 
   - icon:	facebook
     url:	#https://facebook.com/???
     desc: #Connect with me facebook
-    share_url: https://www.facebook.com/sharer.php
+    share_url: #https://www.facebook.com/sharer.php
     share_title: ?t=
     share_link: "&amp;u="
 
   - icon:	github
-    url:	https://github.com/dreamgonfly
+    url:	#https://github.com/dreamgonfly
     desc:	Fork me on github
     share_url:
     share_title:
