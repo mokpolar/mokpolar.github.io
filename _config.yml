@@ -30,13 +30,15 @@ twitter_handle: #'@dreamgonfly'
 #fill in disqus shortname to use disqus
 
 # disqus apply
-comments : true
+comments : 
   provider : "disqus"
-  disqus: "mokpolar-github-io"
+  disqus:
+    shortname : "mokpolar-github-io"
+
 
 # disqus apply2
 # Defaults
-defaults
+defaults :
   - scope:
       path: ""
       type: posts
