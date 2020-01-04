@@ -30,7 +30,7 @@ twitter_handle: #'@dreamgonfly'
 #fill in disqus shortname to use disqus
 
 # disqus apply
-comments : 
+comments : true
   provider : "disqus"
   disqus: "mokpolar-github-io"
 
