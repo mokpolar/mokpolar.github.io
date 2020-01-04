@@ -28,7 +28,12 @@ baseurl: ""
 twitter_handle: #'@dreamgonfly'
 
 #fill in disqus shortname to use disqus
-disqus: #dreamgonfly-blog
+
+# disqus apply
+comments : 
+  provider : "disqus"
+  disqus: "mokpolar-github-io"
+
 
 google_analytics: UA-91026007-2
 
