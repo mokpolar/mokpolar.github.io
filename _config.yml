@@ -34,8 +34,23 @@ comments : true
   provider : "disqus"
   disqus: "mokpolar-github-io"
 
+# disqus apply2
+# Defaults
+defaults
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: single
+      author_profile: true
+      read_time: true
+      comments: true
+      share: true
+      related: true
 
-google_analytics: UA-91026007-2
+
+
+google_analytics: #UA-91026007-2
 
 # social icons and sharing options
 social:
