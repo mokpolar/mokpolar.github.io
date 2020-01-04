@@ -16,11 +16,11 @@ minimal_mistakes_skin    : "default" # "air", "aqua", "contrast", "dark", "dirt"
 
 # Site Settings
 locale                   : "en-US"
-title                    : "문돌이의 하루하루 배우는 블로그"
+title                    : "문돌이가 공부하는 블로그"
 title_separator          : "-"
 subtitle                 : # site tagline that appears below site title in masthead
 name                     : "IT초보"
-description              : "어쩌다 IT를 시작하게 된 문과생의 학습 기록용 블로그"
+description              : "어쩌다 IT를 하게 된 문돌이의 학습 기록용 블로그"
 url                      : "https://mokpolar.github.io" # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
 repository               : # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
