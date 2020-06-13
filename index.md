@@ -5,5 +5,5 @@
 # See: https://jekyllrb.com/docs/themes/#overriding-theme-defaults
 #
 layout: default
-title: LIKE IT - 공부하며 기록하기
+title: TOUCHING ELEPHANT - 차근차근
 ---
