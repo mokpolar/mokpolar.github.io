@@ -27,7 +27,7 @@ navigation: # Navigation links
   - { name: "About", link: "/about" }
 
 tagline: >
-  IT 까막눈이 뉴비가 코끼리를 살펴가듯 차근 차근 공부해나가는 블로그
+  IT 입문자가 코끼리를 살펴가듯 차근 차근 공부해나가는 블로그
 
 hero_img: posts/sleek_lg.jpg # Main background image: use the path from /assets/img/ => This will output /assets/img/posts/sleek_lg.jpg
 
