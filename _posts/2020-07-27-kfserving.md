@@ -8,7 +8,7 @@ author: mokpolar
 sitemap:
     changefreq: daily
     priority: 1.0
-#comments: true
+comments: true
 
 ---
 
