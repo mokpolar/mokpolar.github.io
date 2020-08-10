@@ -8,6 +8,8 @@ author: mokpolar
 sitemap:
     changefreq: daily
     priority: 1.0
+#comments: true
+
 ---
 
 # EKS에 Kubeflow를 설치한 후기
