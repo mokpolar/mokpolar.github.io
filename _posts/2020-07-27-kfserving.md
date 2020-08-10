@@ -6,8 +6,8 @@ featured-img: office1
 categories: [Devlog]
 author: mokpolar
 sitemap:
-  changefreq: daily
-  priority: 1.0
+    changefreq: daily
+    priority: 1.0
 ---
 
 # EKS에 Kubeflow를 설치한 후기
