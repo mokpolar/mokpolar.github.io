@@ -2,3 +2,4 @@
 source "https://rubygems.org"
 gem "jekyll-sleek"
 #gemspec
+gem 'jekyll-sitemap'

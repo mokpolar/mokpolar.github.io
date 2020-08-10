@@ -2,11 +2,9 @@
 title: TOUCHING ELEPHANT # your site title
 author: mokpolar # You :P
 description: > # Meta description of Homepage
-  Write an awesome description for your new site here. You can edit this
-  line in _config.yml. It will appear in your document head meta (for
-  Google search results) and in your feed.xml site description.
+  sssssstudy foreeeeeever......
 baseurl: "/" # the subpath of your site, e.g. /blog
-url: "https://mokpolar.github.io/" # the base hostname & protocol for your site, e.g. http://example.com
+url: "https://mokpolar.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 
 # SEO PLUGIN
 social:
@@ -27,7 +25,7 @@ navigation: # Navigation links
   - { name: "About", link: "/about" }
 
 tagline: >
-  IT 뉴비의 차근 차근 공부해나가는 블로그
+  IT 입문자가 코끼리를 살펴가듯 차근 차근 공부해나가는 블로그
 
 hero_img: posts/sleek_lg.jpg # Main background image: use the path from /assets/img/ => This will output /assets/img/posts/sleek_lg.jpg
 
@@ -38,7 +36,10 @@ github_username: mokpolar # replace with your_github_username or comment to remo
 #instagram_username: shanlongjj # replace with your_instagram_username or comment to remove link from footer
 
 disqus:
-  shortname: mokpolar # to enable comments replace with your_disqus_shortname
+  shortname: mokpolar.github.io
+
+comments: true
+  provider: disqus
 
 # google_tag_manager: GTM-XXXXXXX # Uncomment to enable GTM. Replace GTM-XXXXXXX with your GTM container ID
 
