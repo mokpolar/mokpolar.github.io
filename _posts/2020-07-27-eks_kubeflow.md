@@ -152,3 +152,8 @@ KFServing도 같이 거기 깔렸을 텐데..
 
 처음에는 이렇게 그대로 쓰다가 나중에는 자동으로 깔린 KFServing을 지워버리고 그냥 새 버젼을 받아서 쓰게 되었다.   
 그에 대해서는 다음 글에 써야겠다. 블로그에 올리는 첫 글인데 쓰다보니 생각보다 글이 길어졌다. 
+
+### Reference
+
+* https://docs.aws.amazon.com/ko_kr/eks/latest/userguide/getting-started-eksctl.html
+* https://www.kubeflow.org/docs/aws/deploy/install-kubeflow/
