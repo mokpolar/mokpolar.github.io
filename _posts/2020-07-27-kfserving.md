@@ -4,6 +4,7 @@ title: EKS에 Kubeflow를 설치한 후기
 summary: 딥러닝 모델 서빙용으로 KFServing을 사용할 수 있을 지를 테스트하게 되었다. Kubeflow 라는 이름부터 생소한 상황이라 이런 저런 삽질을 많이 했고 그 과정을 기억하기 위해 이 글을 쓴다....
 featured-img: office1
 categories: [Devlog]
+author: mokpolar
 sitemap:
   changefreq: daily
   priority: 1.0
