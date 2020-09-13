@@ -139,10 +139,10 @@ spec:
 KFServing의 inferenceservice에는 transformer, predictor, explainer 세 가지 컴포넌트가 있다.  
 transformer는 모델의 전-후처리, predictor는 transformer에서 전처리되어 나온 input을 가지고 prediction 한 후 다시 transformer로 되돌려주고 transformer에서 다시 후처리를 하여 return을 준다.  
 
-transformer와 predictor 모두 예제로 만들어 준 docker image를 그대로 갖다 쓰는 형태로 예제가 구성되어 있고 transformer에는 cpu 1 memory 1Gi를,  
-predictor에는 cpu 1 memory 16Gi를 리소스로 리퀘스트 하는 모습을 볼 수 있다.  
+transformer와 predictor 모두 구글 스토리지에서 그대로 갖다 쓰는 형태로 구성되어 있고   
+transformer에는 cpu 1 memory 1Gi를, predictor에는 cpu 1 memory 16Gi를 리소스로 리퀘스트 하는 모습을 볼 수 있다.  
 
-<u>**그리고 여기에는 GPU 리소스에 대한 request가 없다!!!**</u>
+<u><b>그리고 여기에는 GPU 리소스에 대한 request가 없다!!!</b></u>
 
 이제 배포를 해보자. 
 
