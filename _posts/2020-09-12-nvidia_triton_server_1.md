@@ -188,6 +188,7 @@ kubectl -n kfserving-test logs ${PODNAME} -c storage-initializer
 서로 원하지 않는 위치에 파일을 넣는 것 같다.  
 이걸 테스트하는 시점에서는 config.pbtxt를 사용하는 구조에 대해서 몰랐으므로 github에 [issue](https://github.com/kubeflow/kfserving/issues/1075)를 남겼다.  
 
+```bash
 @mokpolar sorry uploaded the bert model on the wrong level !
 gs://kfserving-samples/models/triton/bert
 |_ config.pbtxt
@@ -198,6 +199,7 @@ gs://kfserving-samples/models/triton/bert
 |_ bert_tf_v2_large_fp16_128_v2
 --|_ config.pbtxt
 --|_ 1/  
+```
 
 이런 답변을 달아주셨다. 모델명도 달랐고 파일 위치도 달랐던 것 같다.  
 바로 해결해주시기를 기대하긴 어려울 것 같아서 그냥 predictor 에 있는 파일을 다운로드 받았다. 
@@ -234,7 +236,7 @@ GPU 1개를 리퀘스트한 기존 predictor에서는 GPU 자원이 없기 때�
 그런데 여기서는 동시에 뜬다.  
 이후 진행한 테스트에 대해서는 다른 글에서 써야겠다.  
 
-![image](https://github.com/mokpolar/mokpolar.github.io/blob/master/assets/img/posts/2020-09-12-01-01-01.png)
+![](./../assets/img/posts/2020-09-12-01-01-01.png)
 
 
 ### Reference
