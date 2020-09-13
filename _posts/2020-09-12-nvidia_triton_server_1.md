@@ -2,7 +2,7 @@
 layout: post
 title: KFServing NVIDIA Triton Inference Server를 배포하고 테스트 한 후기
 summary: 1개 있는 GPU로 모델을 효과적으로 서빙하기 위해서 Nvidia Triton Server를 테스트해보게 되었다.....
-featured-img: typewriter
+featured-img: typewriter-2653187_1280
 categories: [Devlog]
 author: mokpolar
 sitemap:
