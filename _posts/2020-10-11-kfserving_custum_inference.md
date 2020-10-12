@@ -1,7 +1,7 @@
 ---
 layout: post
-title: KFServing InferenceService를 이용해서 Kubernetes에서의 모델 서빙해보기
-summary: 1개 있는 GPU로 모델을 효과적으로 서빙하기 위해서 Nvidia Triton Server를 테스트해보게 되었다.....
+title: KFServing InferenceService를 이용해서 Kubernetes에서의 머신러닝 모델 서빙해보기
+summary: KFServing은 Kubernetes 위에서 머신러닝 모델을 서빙할 수 있도록 해준다.....
 featured-img: keyboard-886462_1920
 categories: [Devlog]
 author: mokpolar
@@ -10,11 +10,9 @@ sitemap:
     priority: 1.0
 ---
 
-# KFServing InferenceService를 이용해서 Kubernetes에서의 모델 서빙해보기
+# KFServing InferenceService를 이용해서 Kubernetes에서의 머신러닝 모델 서빙해보기
 
-KFServing
-
-KFServing은 Kubernetes 위에서 모델을 서빙할 수 있도록 해준다.  
+KFServing은 Kubernetes 위에서 머신러닝 모델을 서빙할 수 있도록 해준다.  
 [KFServing Github 문서](https://github.com/kubeflow/kfserving)를 읽어보면 Tensorflow, PyTorch, ScikitLearn, XGBoost, ONNX 등의 프레임워크를 지원한다고 되어있다.  
 KFServing은 이를 위해서 Kuberenetes의 Custom Resource Definition(이하 CRD)를 제공한다.  
 
