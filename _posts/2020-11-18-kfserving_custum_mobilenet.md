@@ -166,6 +166,7 @@ kubectl cp my_model default/dummy-pod:<MOUNT_PATH>
 
 
 * Python 파일 준비 
+  
 ```py
 import argparse
 import base64
@@ -237,6 +238,7 @@ if __name__ == "__main__":
 ## 3. Python 파일이 동작하는 환경을 보장하는 Dockerfile을 가지고 Docker Hub에 푸시
 
 * Dockerfile
+  
 ```docker
 FROM tensorflow/tensorflow:2.1.0-py3
 
