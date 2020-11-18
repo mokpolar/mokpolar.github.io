@@ -295,7 +295,7 @@ spec:
 ```
 
 
-위의 매니페스트를 가지ㅏ고 inferneceservice를 배포한다. 
+위의 매니페스트를 가지고 inferneceservice를 배포한다. 
 ```sh
 kubectl create -f mobilenet_deploy.yaml
 ```
