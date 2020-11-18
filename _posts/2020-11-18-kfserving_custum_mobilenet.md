@@ -166,7 +166,7 @@ kubectl cp my_model default/dummy-pod:<MOUNT_PATH>
 
 
 * Python 파일 준비 
-```python
+```py
 import argparse
 import base64
 import io
