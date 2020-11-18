@@ -14,6 +14,7 @@ sitemap:
 
 ### KFServing InferenceService의 Custom Image를 쓰는 이유와 다른 점
   
+  
 ---
 이번에는 KFServing InferenceService Custom Image 사용자 이미지를 이용해서 Kubernetes에서의 서빙을 해본다.
 
@@ -27,6 +28,7 @@ Custom Image는 별도의 웹 서버를 필요로 한다.
 만약 tornado 웹 서버를 쓰는 kfserving.KFModel을 사용하면 별도로 웹 서버를 구현하지 않아도 된다.
 
 이 포스팅에서는 Tensorflow를 이용해 MobileNet으로 pb파일을 만들고 이를 custom image로 배포해서 모델 서빙을 해보겠다. 
+  
 
 
 ### KFServing InferenceService Transformer를 이용한 전/후처리에 대해서
@@ -40,6 +42,7 @@ Transformer에서는 사용자가 모델에 넣을 형태로 데이터들을 가
 
 예를 들어, base64 형태의 이미지 파일을 그대로 Transformer에 보내서 모델에 필요한 input으로 전처리를 한 뒤  
 Predictor로 보내고 결과를 받아서 다시 보기 쉽게 후처리를 하게 되는 것이다. 
+  
 
 ### 서빙을 위해 해야할 일들
 
@@ -294,6 +297,11 @@ spec:
 * InferneceService 배포
 ```sh
 kubectl create -f mobilenet_deploy.yaml
+```
+
+inferenceserivce가 잘 배포되었는 지 확인해보자. 
+```bash
+kubectl get inferenceservice
 ```
 
 
