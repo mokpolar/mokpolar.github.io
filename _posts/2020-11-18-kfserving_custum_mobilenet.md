@@ -57,7 +57,9 @@ Kubernetes 클러스터에 KFServing이 설치되어 있다는 전제 하에,
 
 ### MobileNet으로 pb 파일 만들기 
 
-```python
+주피터 노트북이든 어디서든 일단 모델을 저장한다.  
+
+```py
 import tensorflow as tf
 from tensorflow.keras.applications.mobilenet import MobileNet, decode_predictions
 
@@ -71,16 +73,16 @@ model.save('my_model')
 
 ### AWS EBS 로 Persistent Volume 만들기 
 
-현재 AWS EKS를 쓰고 있기 때문에 스토리지로 다루기 편한 EBS를 사용하기로 했다. 
+현재 AWS EKS를 쓰고 있기 때문에 스토리지로 다루기 편한 EBS를 사용하기로 했다.  
+EBS를 생성해서 볼륨 이름을 적어두자.  
 
-* EBS 생성
 ```bash
 VOLUME_ID=$(aws ec2 create-volume --size 55 --region <REGION> --availability-zone <Availability Zone> --volume-type gp2 | jq '.VolumeId' -)
 
 echo $VOLUME_ID
 ```
 
-* Persistent Volume으로서 바인딩하는 매니페스트
+Persistent Volume으로서 바인딩하는 매니페스트를 살펴보자.  
 
 ```yaml
 
@@ -114,7 +116,9 @@ spec:
       storage: 50Gi
 ```
 
-* PV/PVC 생성
+### PV/PVC 생성
+
+아까 만든 파일로 PV/PVC를 생성한다.  
 
 ```bash
 kubectl create -f pv.yaml -n <NAMESPACE>
@@ -123,7 +127,7 @@ kubectl create -f pv.yaml -n <NAMESPACE>
 
 ### 더 좋은 방법이 있겠으나.. 일단 dummy pod 생성해서 PVC 부착하고 만든 모델 업로드
 
-* 아까 생성한 PVC를 부착한 dummy pod 매니페스트
+아까 생성한 PVC를 부착해서 dummy pod을 만들자.  
 
 ```yaml
 
@@ -149,13 +153,13 @@ spec:
 ```
 
 
-* dummy pod 배포
+이제 배포한다. 
 
 ```bash
 kubectl create -f pod.yaml
 ```
 
-* 부착된 PVC에 모델 파일 업로드
+pod가 생성되었으면 여기에 아까 만든 모델을 업로드한다. 
 
 ```bash
 kubectl cp my_model default/dummy-pod:<MOUNT_PATH>
@@ -165,7 +169,7 @@ kubectl cp my_model default/dummy-pod:<MOUNT_PATH>
 ## 2. Pod 에서 실행되는 Python 파일 준비
 
 
-* Python 파일 준비 
+InferenceService pod에서 실행할 python 파일을 준비하자.  
   
 ```py
 import argparse
@@ -237,7 +241,7 @@ if __name__ == "__main__":
 
 ## 3. Python 파일이 동작하는 환경을 보장하는 Dockerfile을 가지고 Docker Hub에 푸시
 
-* Dockerfile
+도커 런타임에서는 에서는 아까 만든 python 파일이 실행될 수 있어야 한다. Dockerfile 의 내용은 아래와 같다. 
   
 ```docker
 FROM tensorflow/tensorflow:2.1.0-py3
@@ -262,7 +266,8 @@ docker push <YOUR_ID>/<IMAGE_NAME>:<TAG>
 
 ## 4. InferenceService 매니페스트 yaml 파일 준비 후 배포
 
-* InferenceService 매니페스트
+마지막으로 배포 될 InferenceService의 매니페스트를 살펴보자.  
+InferenceService는 Kubernetes custom resource로서 deployment 보다 상위에 있고 deployment를 관리한다.  
 ```yaml
 
 # mobilenet_deploy.yaml
