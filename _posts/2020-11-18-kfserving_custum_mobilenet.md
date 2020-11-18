@@ -28,7 +28,7 @@ Custom Image는 별도의 웹 서버를 필요로 한다.
 만약 tornado 웹 서버를 쓰는 kfserving.KFModel을 사용하면 별도로 웹 서버를 구현하지 않아도 된다.
 
 이 포스팅에서는 Tensorflow를 이용해 MobileNet으로 pb파일을 만들고 이를 custom image로 배포해서 모델 서빙을 해보겠다. 
-  
+<br>
 
 
 ### KFServing InferenceService Transformer를 이용한 전/후처리에 대해서
@@ -43,7 +43,7 @@ Transformer에서는 사용자가 모델에 넣을 형태로 데이터들을 가
 예를 들어, base64 형태의 이미지 파일을 그대로 Transformer에 보내서 모델에 필요한 input으로 전처리를 한 뒤  
 Predictor로 보내고 결과를 받아서 다시 보기 쉽게 후처리를 하게 되는 것이다. 
   
-
+<br>
 ### 서빙을 위해 해야할 일들
 
 Kubernetes 클러스터에 KFServing이 설치되어 있다는 전제 하에,
@@ -55,7 +55,7 @@ Kubernetes 클러스터에 KFServing이 설치되어 있다는 전제 하에,
 5. 실행해보기
 
 하나 하나씩 해보자. 
-
+<br>
 ## 1. 모델 pb파일을 스토리지에 올리기 
 
 ### MobileNet으로 pb 파일 만들기 
@@ -73,7 +73,7 @@ model.save('my_model')
 ```
 
 이제 my_model 폴더에 모델이 저장되었을 것이다. 
-
+<br>
 ### AWS EBS 로 Persistent Volume 만들기 
 
 현재 AWS EKS를 쓰고 있기 때문에 스토리지로 다루기 편한 EBS를 사용하기로 했다.  
@@ -118,7 +118,7 @@ spec:
     requests:
       storage: 50Gi
 ```
-
+<br>
 ### PV/PVC 생성
 
 아까 만든 파일로 PV/PVC를 생성한다.  
@@ -127,7 +127,7 @@ spec:
 kubectl create -f pv.yaml -n <NAMESPACE>
 ```
 
-
+<br>
 ### 더 좋은 방법이 있겠으나.. 일단 dummy pod 생성해서 PVC 부착하고 만든 모델 업로드
 
 아까 생성한 PVC를 부착해서 dummy pod을 만들자.  
@@ -169,6 +169,7 @@ kubectl cp my_model default/dummy-pod:<MOUNT_PATH>
 ```
 이렇게 하면 이제 볼륨에 모델이 들어갔다. 
 
+<br>
 ## 2. Pod 에서 실행되는 Python 파일 준비
 
 
@@ -241,7 +242,7 @@ if __name__ == "__main__":
 ```
 
 
-
+<br>
 ## 3. Python 파일이 동작하는 환경을 보장하는 Dockerfile을 가지고 Docker Hub에 푸시
 
 도커 런타임에서는 에서는 아까 만든 python 파일이 실행될 수 있어야 한다. Dockerfile 의 내용은 아래와 같다. 
@@ -266,7 +267,7 @@ docker build -t <YOUR_ID>/<IMAGE_NAME>:<TAG> .
 
 docker push <YOUR_ID>/<IMAGE_NAME>:<TAG>
 ```
-
+<br>
 ## 4. InferenceService 매니페스트 yaml 파일 준비 후 배포
 
 마지막으로 배포 될 InferenceService의 매니페스트를 살펴보자.  
@@ -298,7 +299,7 @@ spec:
 ```sh
 kubectl create -f mobilenet_deploy.yaml
 ```
-
+<br>
 inferenceserivce가 잘 배포되었는 지 확인해보자. 
 ```bash
 kubectl get inferenceservice
