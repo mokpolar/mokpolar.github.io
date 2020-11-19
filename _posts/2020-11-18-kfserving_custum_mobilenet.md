@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 이미지 예측 모델을 Kubernetes에 배포하기 A to Z (KFServing InferenceServiec Custom Image)
+title: 이미지 예측 모델을 Kubernetes에 배포하기 A to Z (KFServing InferenceService Custom Image)
 summary: custom image를 사용하면 컨테이너안에 사용자 자신의 래핑된 모델을 KFServing을 통해 서빙할 수 있다.....
 featured-img: objects_1920
 categories: [Devlog]
