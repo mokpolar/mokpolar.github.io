@@ -349,7 +349,7 @@ C7QdQXSIkgF5eyASSbsy5OIfWSio9t5mdof8+j/2Q=="}}]}
 로드밸런서를 쓰던 NodePort를 사용하던 상관없다.  
 CLUSTER_IP 자리에 나는 로드밸런서로 생성된 외부 IP를 넣었다.  
 SERVICE_HOSTNAME은 kubectl get inferenceservice에서 볼 수 있는 엔드포인트이다.  
-<inferenceservice name>.<namespace>.example.com 으로 구성되어 있다.  
+엔드포인트는 inferenceservice name.namespace.example.com 으로 구성되어 있다.  
 
 
 ```bash
@@ -382,7 +382,7 @@ curl -v -H "Host: ${SERVICE_HOSTNAME}" http://$CLUSTER_IP/v1/models/$MODEL_NAME:
 {"predictions": [["plastic_bag", "27.64%"]]}%
 ```
 
-예측 결과가 다소 이상하지만 그건 그냥 넘어가도록 하자.  
+예측 결과가 좀 이상하지만 그건 그냥 넘어가도록 하자.  
 이 포스트는 모델의 성능을 보고자 하는 것이 아니기 때문에.  
 
 ### Reference
