@@ -16,7 +16,7 @@ sitemap:
   
   
 ---
-이번 글은 이미지 예측 모델을 Kuberentes에 배포해서 원하는 이미지가 무엇인지 예측해보는 내용이다.  
+이번 글은 이미지 예측 모델을 Kuberentes에 배포해서 이미지를 업로드 하고 예측 결과와 그 확률을 받아보는 구조를 만드는 내용이다. 
 KFServing InferenceService Custom Image 사용자 이미지를 이용해서 Kubernetes에서의 서빙을 해본다.
 
 전 글에서 포스팅 한 내용은 사용자가 KFServing InferenceService 매니페스트에 Tensorflow pb파일의 경로를 지정해주면 KFServing에서 알아서 Tensorflow Serving을 사용해서 배포를 해주는 구조였다.  
