@@ -82,7 +82,7 @@ EBS를 생성해서 볼륨 이름을 적어두자.
 PV를 지원하는 다른 [스토리지](https://kubernetes.io/ko/docs/concepts/storage/persistent-volumes/)들을 자유롭게 사용하면 된다.
 
 ```bash
-VOLUME_ID=$(aws ec2 create-volume --size 55 --region <REGION> --availability-zone <Availability Zone> --volume-type gp2 | jq '.VolumeId' -)
+VOLUME_ID=$(aws ec2 create-volume --size 50 --region <REGION> --availability-zone <Availability Zone> --volume-type gp2 | jq '.VolumeId' -)
 
 echo $VOLUME_ID
 ```
