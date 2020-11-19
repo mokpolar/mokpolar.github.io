@@ -72,7 +72,7 @@ saved_model_path = "./saved_models/1/"
 model.save(saved_model_path)
 ```
 
-이제 my_model 폴더에 모델이 저장되었을 것이다. 
+이제 saved_models 폴더에 모델이 저장되었을 것이다. 
 <br>
 <br>
 ### AWS EBS 로 Persistent Volume 만들기 
@@ -169,15 +169,14 @@ pod가 생성되었으면 여기에 아까 만든 모델을 업로드한다.
 ```bash
 kubectl cp saved_models default/dummy-pod:<MOUNT_PATH>
 ```
-이렇게 하면 이제 볼륨에 모델이 들어갔다.  
-잘 들어 갔는지 확인해 봅시다. 
+이렇게 하면 이제 볼륨에 모델이 들어갔다. 잘 들어 갔는지 확인해 봅시다.  
+아래와 같이 exec -it 명령으로 대화형으로 접근해서 내부 구조를 확인해 볼 수 있다. 
 ```bash
 kubectl exec -it dummy-pod -- sh
 / # cd /tmp
 /tmp # ls
 my_model
 ```
-
 <br>
 ## 2. Pod 에서 실행되는 Python 파일 준비
 
@@ -311,22 +310,22 @@ spec:
 ```sh
 kubectl create -f mobilenet_deploy.yaml
 ```
-<br>
 inferenceserivce가 잘 배포되었는 지 확인해보자. 
 
 ```bash
 kubectl get inferenceservice
+
 NAME        URL                                    READY   DEFAULT TRAFFIC   CANARY TRAFFIC   AGE
 mobilenet   http://mobilenet.default.example.com   True    100                                113s
 
 ```
-제대로 배포가 되었다면 READY 가 True로 되어있고 접근 가능한 내부 엔드포인트가 이렇게 보여야 한다. 
-
+제대로 배포가 되었다면 READY 가 True로 되어있고 접근 가능한 내부 엔드포인트가 이렇게 보여야 한다.  
 그리고 이렇게 pod도 두 개가 떠 있어야 한다.  
 trasformer와 predictor pod 이다.
 
 ```bash
 kubectl get po
+
 NAME                                                              READY   STATUS    RESTARTS   AGE
 mobilenet-predictor-default-g2679-deployment-5998ffcbdb-7tkm2     2/2     Running   0          7m
 mobilenet-transformer-default-7cl4z-deployment-59dc657474-tp65n   2/2     Running   0          7m1s
@@ -334,7 +333,57 @@ mobilenet-transformer-default-7cl4z-deployment-59dc657474-tp65n   2/2     Runnin
 
 ## 5. 실행 해보기 
 
+실행을 위해 미리 이런 고양이 사진을 base64 형태로 만들어서 json 파일로 만들었다.   
 
+![](./../assets/img/posts/cat.jpg) 
+
+json파일의 형태는 이러하다.  
+
+```json
+{"instances": [{"image": {"b64": "/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAA
+...
+C7QdQXSIkgF5eyASSbsy5OIfWSio9t5mdof8+j/2Q=="}}]}
+```
+
+엔드포인트는 이전 포스트에서 만든 것처럼 AWS 로드밸런서로 되어있다.  
+로드밸런서를 쓰던 NodePort를 사용하던 상관없다.  
+CLUSTER_IP 자리에 나는 로드밸런서로 생성된 외부 IP를 넣었다.  
+SERVICE_HOSTNAME은 kubectl get inferenceservice에서 볼 수 있는 엔드포인트이다.  
+<inferenceservice name>.<namespace>.example.com 으로 구성되어 있다.  
+
+
+```bash
+CLUSTER_IP=<MY_CLUSTER_IP>
+SERVICE_HOSTNAME=mobilenet.default.example.com
+INPUT_PATH=@./cat.json
+MODEL_NAME=mobilenet
+curl -v -H "Host: ${SERVICE_HOSTNAME}" http://$CLUSTER_IP/v1/models/$MODEL_NAME:predict -d $INPUT_PATH
+
+
+*   Trying 34.203.26.73:80...
+* Connected to a7b0fc16c3bc54a278ac63ba9ee837a9-688394741.us-east-1.elb.amazonaws.com (34.203.26.73) port 80 (#0)
+> POST /v1/models/mobilenet:predict HTTP/1.1
+> Host: mobilenet.default.example.com
+> User-Agent: curl/7.71.1
+> Accept: */*
+> Content-Length: 103071
+> Content-Type: application/x-www-form-urlencoded
+>
+* We are completely uploaded and fine
+* Mark bundle as not supporting multiuse
+< HTTP/1.1 200 OK
+< content-length: 44
+< content-type: application/json; charset=UTF-8
+< date: Thu, 19 Nov 2020 05:39:56 GMT
+< server: istio-envoy
+< x-envoy-upstream-service-time: 648
+<
+* Connection #0 to host a7b0fc16c3bc54a278ac63ba9ee837a9-688394741.us-east-1.elb.amazonaws.com left intact
+{"predictions": [["plastic_bag", "27.64%"]]}%
+```
+
+예측 결과가 다소 이상하지만 그건 그냥 넘어가도록 하자.  
+이 포스트는 모델의 성능을 보고자 하는 것이 아니기 때문에.  
 
 ### Reference
 
