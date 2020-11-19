@@ -1,6 +1,6 @@
 ---
 layout: post
-title: MobileNet을 KFServing custom image로 Kubernetes에 배포하기 A to Z (feat. TransFormer를 이용한 전처리)
+title: 이미지 예측 모델을 Kubernetes에 배포하기 A to Z (KFServing InferenceServiec Custom Image)
 summary: custom image를 사용하면 컨테이너안에 사용자 자신의 래핑된 모델을 KFServing을 통해 서빙할 수 있다.....
 featured-img: objects_1920
 categories: [Devlog]
@@ -10,13 +10,14 @@ sitemap:
     priority: 1.0
 ---
 
-# MobileNet을 KFServing custom image로 Kubernetes에 배포하기 A to Z (feat. TransFormer를 이용한 전처리)
+# 이미지 예측 모델을 Kubernetes에 배포하기 A to Z (KFServing InferenceService Custom Image)
 
 ### KFServing InferenceService의 Custom Image를 쓰는 이유와 다른 점
   
   
 ---
-이번에는 KFServing InferenceService Custom Image 사용자 이미지를 이용해서 Kubernetes에서의 서빙을 해본다.
+이번 글은 이미지 예측 모델을 Kuberentes에 배포해서 원하는 이미지가 무엇인지 예측해보는 내용이다.  
+KFServing InferenceService Custom Image 사용자 이미지를 이용해서 Kubernetes에서의 서빙을 해본다.
 
 전 글에서 포스팅 한 내용은 사용자가 KFServing InferenceService 매니페스트에 Tensorflow pb파일의 경로를 지정해주면 KFServing에서 알아서 Tensorflow Serving을 사용해서 배포를 해주는 구조였다.  
 
@@ -57,8 +58,9 @@ Kubernetes 클러스터에 KFServing이 설치되어 있다는 전제 하에,
 <br>
 ## 1. 모델 pb파일을 스토리지에 올리기 
 
-### MobileNet으로 pb 파일 만들기 
+### MobileNet으로 pb 파일 만들기  
 
+이미지 예측 모델은 가벼운 MobileNet으로 테스트 해보겠다. 
 주피터 노트북이든 어디서든 일단 모델을 저장한다.  
 
 ```py
