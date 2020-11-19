@@ -256,7 +256,8 @@ if __name__ == "__main__":
 <br>
 ## 3. Python 파일이 동작하는 환경을 보장하는 Dockerfile을 가지고 Docker Hub에 푸시
 
-도커 런타임에서는 에서는 아까 만든 python 파일이 실행될 수 있어야 한다. Dockerfile 의 내용은 아래와 같다. 
+도커 런타임에서는 아까 만든 python 파일이 실행될 수 있어야 한다.  
+Dockerfile 의 내용은 아래와 같다. 
   
 ```docker
 FROM tensorflow/tensorflow:2.1.0-py3
