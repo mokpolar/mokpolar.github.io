@@ -29,15 +29,14 @@ Custom Image는 별도의 웹 서버를 필요로 한다.
 
 이 포스팅에서는 Tensorflow를 이용해 MobileNet으로 pb파일을 만들고 이를 custom image로 배포해서 모델 서빙을 해보겠다. 
 <br>
-
+<br>
 
 ### KFServing InferenceService Transformer를 이용한 전/후처리에 대해서
 ---
 ![](./../assets/img/posts/2020-10-11-01-01-02.jpg)  
 출처: [KFServing Github](https://github.com/kubeflow/kfserving)
 
-KFServing InferenceService 데이터 플레인 아키텍쳐를 보면,  
-Transformer를 거쳐서 predict를 할 수 있게 되어있다.  
+KFServing InferenceService 데이터 플레인 아키텍쳐를 보면 Transformer를 거쳐서 predict를 할 수 있게 되어있다.  
 Transformer에서는 사용자가 모델에 넣을 형태로 데이터들을 가공하는 전처리 혹은 그 결과물을 사용자가 보고 싶은대로 가공하는 후처리 작업을 할 수 있다.  
 
 예를 들어, base64 형태의 이미지 파일을 그대로 Transformer에 보내서 모델에 필요한 input으로 전처리를 한 뒤  
@@ -68,16 +67,19 @@ from tensorflow.keras.applications.mobilenet import MobileNet, decode_prediction
 
 mobilenet = tf.keras.applications.mobilenet
 model = mobilenet.MobileNet(weights = "imagenet")
+saved_model_path = "./saved_models/1/"
 
-model.save('my_model')
+model.save(saved_model_path)
 ```
 
 이제 my_model 폴더에 모델이 저장되었을 것이다. 
+<br>
 <br>
 ### AWS EBS 로 Persistent Volume 만들기 
 
 현재 AWS EKS를 쓰고 있기 때문에 스토리지로 다루기 편한 EBS를 사용하기로 했다.  
 EBS를 생성해서 볼륨 이름을 적어두자.  
+PV를 지원하는 다른 [스토리지](https://kubernetes.io/ko/docs/concepts/storage/persistent-volumes/)들을 자유롭게 사용하면 된다.
 
 ```bash
 VOLUME_ID=$(aws ec2 create-volume --size 55 --region <REGION> --availability-zone <Availability Zone> --volume-type gp2 | jq '.VolumeId' -)
@@ -109,7 +111,7 @@ apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: model-pvc
-  namespace: kfserving-test
+  namespace: default
 spec:
   storageClassName: ""
   accessModes:
@@ -124,7 +126,7 @@ spec:
 아까 만든 파일로 PV/PVC를 생성한다.  
 
 ```bash
-kubectl create -f pv.yaml -n <NAMESPACE>
+kubectl create -f pv.yaml
 ```
 
 <br>
@@ -165,9 +167,16 @@ kubectl create -f pod.yaml
 pod가 생성되었으면 여기에 아까 만든 모델을 업로드한다. 
 
 ```bash
-kubectl cp my_model default/dummy-pod:<MOUNT_PATH>
+kubectl cp saved_models default/dummy-pod:<MOUNT_PATH>
 ```
-이렇게 하면 이제 볼륨에 모델이 들어갔다. 
+이렇게 하면 이제 볼륨에 모델이 들어갔다.  
+잘 들어 갔는지 확인해 봅시다. 
+```bash
+kubectl exec -it dummy-pod -- sh
+/ # cd /tmp
+/tmp # ls
+my_model
+```
 
 <br>
 ## 2. Pod 에서 실행되는 Python 파일 준비
@@ -176,6 +185,9 @@ kubectl cp my_model default/dummy-pod:<MOUNT_PATH>
 InferenceService pod에서 실행할 python 파일을 준비하자.  
   
 ```py
+
+# image_transformer.py
+
 import argparse
 import base64
 import io
@@ -256,7 +268,7 @@ RUN pip install kfserving==0.3.0 numpy image
 
 ENV APP_HOME /app
 WORKDIR $APP_HOME
-ADD simple_mobilenet_transformer.py /app/
+ADD image_transformer.py /app/
 
 ENTRYPOINT ["python", "image_transformer.py"]
 ```
@@ -279,13 +291,13 @@ InferenceService는 Kubernetes custom resource로서 deployment 보다 상위에
 apiVersion: "serving.kubeflow.org/v1alpha2"
 kind: "InferenceService"
 metadata:
-  name: "simple-mobilenet-transformer"
+  name: "mobilenet"
 spec:
   default:
     predictor:
       minReplicas: 1
       tensorflow:
-        storageUri: "pvc://my-pvc/my_model/"
+        storageUri: "pvc://model-pvc/saved_models/"
     transformer:
       minReplicas: 1
       custom:
@@ -301,10 +313,24 @@ kubectl create -f mobilenet_deploy.yaml
 ```
 <br>
 inferenceserivce가 잘 배포되었는 지 확인해보자. 
+
 ```bash
 kubectl get inferenceservice
-```
+NAME        URL                                    READY   DEFAULT TRAFFIC   CANARY TRAFFIC   AGE
+mobilenet   http://mobilenet.default.example.com   True    100                                113s
 
+```
+제대로 배포가 되었다면 READY 가 True로 되어있고 접근 가능한 내부 엔드포인트가 이렇게 보여야 한다. 
+
+그리고 이렇게 pod도 두 개가 떠 있어야 한다.  
+trasformer와 predictor pod 이다.
+
+```bash
+kubectl get po
+NAME                                                              READY   STATUS    RESTARTS   AGE
+mobilenet-predictor-default-g2679-deployment-5998ffcbdb-7tkm2     2/2     Running   0          7m
+mobilenet-transformer-default-7cl4z-deployment-59dc657474-tp65n   2/2     Running   0          7m1s
+```
 
 ## 5. 실행 해보기 
 
