@@ -379,7 +379,7 @@ curl -v -H "Host: ${SERVICE_HOSTNAME}" http://$CLUSTER_IP/v1/models/$MODEL_NAME:
 < server: istio-envoy
 < x-envoy-upstream-service-time: 648
 <
-* Connection #0 to host a7b0fc16c3bc54a278ac63ba9ee837a9-688394741.us-east-1.elb.amazonaws.com left intact
+* Connection #0 to host  left intact
 {"predictions": [["plastic_bag", "27.64%"]]}%
 ```
 
