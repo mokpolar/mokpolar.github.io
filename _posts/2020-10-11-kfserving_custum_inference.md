@@ -10,7 +10,7 @@ sitemap:
     priority: 1.0
 ---
 
-# Kubeflow를 이용해서 Kubernetes에서 머신러닝 모델 서빙해보기 (KFServing InferenceService)
+# Kubeflow를 이용해서 쿠버네티스에서 머신러닝 모델 서빙해보기 (Kubernetes KFServing InferenceService)
 
 KFServing은 Kubernetes 위에서 머신러닝 모델을 서빙할 수 있도록 해준다.  
 [KFServing Github 문서](https://github.com/kubeflow/kfserving)를 읽어보면 Tensorflow, PyTorch, ScikitLearn, XGBoost, ONNX 등의 프레임워크를 지원한다고 되어있다.  
