@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Kubeflow를 이용해서 Kubernetes에서 머신러닝 모델 서빙해보기 (KFServing InferenceService)
+title: Kubeflow를 이용해서 쿠버네티스에서 머신러닝 모델 서빙해보기 (Kubernetes KFServing InferenceService)
 summary: KFServing은 Kubernetes 위에서 머신러닝 모델을 서빙할 수 있도록 해준다.....
 featured-img: keyboard-886462_1920
 categories: [Devlog]
