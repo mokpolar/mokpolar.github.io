@@ -2,7 +2,7 @@
 layout: post
 title: Kubernetes(EKS)와 GitLab을 이용해 CI/CD 구축 예제를 테스트해본 후기
 summary: 실제 코드를 이용해 CI/CD 구축을 해보기 전에 먼저 테스트를 해보았다.....
-featured-img: objects_1920
+featured-img: gitlab-282507
 categories: [Devlog]
 author: mokpolar
 sitemap:
@@ -61,7 +61,6 @@ Connect existing cluster 탭을 클릭해본다. 아래와 같이 입력해야 �
 
     kubectl get secret [blah]  -o jsonpath="{['data']['ca\.crt']}" | base64 --decode
 
-    kubectl get secret default-token-plthg  -o jsonpath="{['data']['ca\.crt']}" | base64 --decode
 
     -----BEGIN CERTIFICATE-----
     blahblah
