@@ -392,3 +392,6 @@ curl -v -H "Host: ${SERVICE_HOSTNAME}" http://$CLUSTER_IP/v1/models/$MODEL_NAME:
 
 * https://github.com/kubeflow/kfserving/tree/master/docs/samples/custom/kfserving-custom-model
 * https://github.com/kubeflow/kfserving/tree/master/docs/samples/transformer/image_transformer
+
+
+혹시 내용에 잘못 된 부분이 있으면 Disqus로 댓글 달아주시면 감사하겠습니다!

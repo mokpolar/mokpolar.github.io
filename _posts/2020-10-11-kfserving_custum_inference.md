@@ -198,3 +198,6 @@ KFServing은 모든 모델 프레임워크에 대해 표준화된 예측 워크�
 * https://github.com/kubeflow/kfserving
 * https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/
 * https://github.com/kubeflow/kfserving/tree/master/docs/samples/tensorflow
+
+
+혹시 내용에 잘못 된 부분이 있으면 Disqus로 댓글 달아주시면 감사하겠습니다!

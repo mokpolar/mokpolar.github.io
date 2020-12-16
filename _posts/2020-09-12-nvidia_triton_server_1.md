@@ -249,3 +249,6 @@ GPU 1개를 리퀘스트한 기존 predictor에서는 GPU 자원이 없기 때�
 * https://github.com/kubeflow/kfserving/tree/master/docs/samples/triton
 * https://github.com/triton-inference-server/server/releases
 * https://github.com/kubeflow/kfserving/issues/1075
+
+
+혹시 내용에 잘못 된 부분이 있으면 Disqus로 댓글 달아주시면 감사하겠습니다!
