@@ -70,7 +70,7 @@ Connect existing cluster 탭을 클릭해본다. 아래와 같이 입력해야 �
     * BEGIN 라인부터 END 라인까지 전체 복사해서 입력
 
   * Service Token : 서비스 어카운터와 클러스터 롤 바인딩을 생성해서 토큰을 입력해줘야 함  
-    gitlab-admin-service-account.yaml
+    gitlab-admin-service-account.yaml   
     ```yaml
     apiVersion: v1
     kind: ServiceAccount
