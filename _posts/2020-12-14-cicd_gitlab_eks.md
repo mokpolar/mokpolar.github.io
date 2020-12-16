@@ -105,6 +105,7 @@ Connect existing cluster 탭을 클릭해본다. 아래와 같이 입력해야 �
     ```
 
     
+<br>
 6. 아래와 같은 화면을 볼 수 있다. Base domain은 내 로드밸런서를 입력해준다.   
 ![](./../assets/img/posts/2020-12-14-01-01-04.png)  
 
