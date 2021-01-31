@@ -1,4 +1,4 @@
-[![HitCount](http://hits.dwyl.com/mokpolar/mokpolar / mokpolargithubio.svg)](http://hits.dwyl.com/mokpolar/mokpolar / mokpolargithubio)
+
 
 
 # Sleek
