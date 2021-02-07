@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 프라이빗 레지스트리 Harbor에 MinIO를 백엔드 스토리지로 설치하는 방법 (private registry Harbor, backend as MinIO guide on GCP)
+title: 프라이빗 레지스트리 Harbor에 MinIO를 백엔드 스토리지로 설치하고 사용하는 방법 (private registry Harbor, backend as MinIO : install guide on GCP)
 summary: MinIO 오브젝트 스토리지를 하나의 노드에 그리고 4개의 노드에 분산형으로 설치해보았다...
 featured-img: harbor_logo
 categories: [Devlog]
