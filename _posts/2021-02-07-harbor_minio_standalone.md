@@ -263,7 +263,15 @@ latest: digest: sha256:blah size: 525
 
 ![](./../assets/img/posts/2021-02-07-01-03.png)  
 
- 
+### MinIO와 잘 연동되었는지 확인
+
+Harbor의 설치도 설치지만 백엔드로 MinIO를 잘 쓰고 있는지도 봐야한다.  
+이전에 생성한 MinIO 페이지로 들어가면 아래와 같이 hello-world 이미지가 잘 들어와 있는 모습을 볼 수 있다. 
+![](./../assets/img/posts/2021-02-07-01-04.png)  
+
+
+Harbor와 MinIO를 실제로 프로덕션 환경에 사용하기 위한 구현은 쿠버네티스 위에서 했다.  
+그에 대한 내용은 다음 글로 써야겠다.  
 
 
 ### Reference
