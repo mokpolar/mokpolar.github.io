@@ -2,7 +2,7 @@
 title: TOUCHING ELEPHANT # your site title
 author: mokpolar # You :P
 description: > # Meta description of Homepage
-  IT 입문자가 코끼리를 살펴가듯 차근 차근 공부해나가는 블로그.
+  코끼리를 살펴가듯 차근 차근 공부해나가는 블로그.
 baseurl: "/" # the subpath of your site, e.g. /blog
 url: "https://mokpolar.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 
