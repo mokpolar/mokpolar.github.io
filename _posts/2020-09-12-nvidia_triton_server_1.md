@@ -1,5 +1,6 @@
 ---
 layout: post
+no_hidden: true
 title: NVIDIA Triton Inference Server를 쿠버네티스에 배포하고 GPU 병렬 사용을 테스트 한 후기 (Kubernetes Kubeflow KFServing)
 summary: 1개 있는 GPU로 모델을 효과적으로 서빙하기 위해서 Nvidia Triton Server를 테스트해보게 되었다.....
 featured-img: typewriter-2653187_1280

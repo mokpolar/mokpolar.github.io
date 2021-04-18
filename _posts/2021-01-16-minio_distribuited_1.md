@@ -1,5 +1,6 @@
 ---
 layout: post
+no_hidden: true
 title: MinIO Object Storage 설치/사용 가이드 (Stand-alone, Distributed on GCP VM Instance install guide)
 summary: MinIO 오브젝트 스토리지를 하나의 노드에 그리고 4개의 노드에 분산형으로 설치해보았다...
 featured-img: MINIO_wordmark
