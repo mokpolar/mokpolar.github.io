@@ -11,7 +11,7 @@ sitemap:
     priority: 1.0
 ---
 
-# Ceph를 쿠버네티스에 설치한 후기 (install ceph on kubernetes)
+# Ceph를 쿠버네티스에 설치해서 Object Storage로 사용한 후기 (install ceph object storage on kubernetes)
 
 ## 사전 정보
 
@@ -52,7 +52,7 @@ kubectl create -f crds.yaml -f common.yaml -f operator.yaml
 
 ### Create a Rook Ceph Cluster
 
-1. cluster.yaml
+1 cluster.yaml  
 여기서 분기가 나뉜다.   
 cluster.yaml로 그대로 배포하면 노드에 있는 공간을 사용한다. 
 
@@ -60,7 +60,7 @@ cluster.yaml로 그대로 배포하면 노드에 있는 공간을 사용한다.
 kubectl create -f cluster.yaml
 ```
 
-2. cluster-on-pvc.yaml
+2 cluster-on-pvc.yaml  
 GKE 환경이므로 dynamic하게 볼륨의 이용이 가능하다. 
 
 GCP Persistent Disk를 통해서 동적으로 공간을 늘려가기 위해 
