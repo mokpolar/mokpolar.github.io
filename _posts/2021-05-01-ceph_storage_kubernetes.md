@@ -1,7 +1,7 @@
 ---
 layout: post
 no_hidden: true
-title: Ceph를 쿠버네티스에 설치해서 Object Storage로 사용한 후기 (install ceph object storage on kubernetes)
+title: Ceph를 쿠버네티스에 설치해서 Object Storage로 사용하는 방법 (install ceph object storage on kubernetes)
 summary: 쿠버네티스에서 머신러닝 모델과 도커 이미지들을 관리할 수 있는 stateful 한 공간이 필요했다...
 featured-img: ceph
 categories: [Devlog]
@@ -11,7 +11,7 @@ sitemap:
     priority: 1.0
 ---
 
-# Ceph를 쿠버네티스에 설치해서 Object Storage로 사용한 후기 (install ceph object storage on kubernetes)
+# Ceph를 쿠버네티스에 설치해서 Object Storage로 사용하는 방법 (install ceph object storage on kubernetes)
 
 ## 사전 정보
 
