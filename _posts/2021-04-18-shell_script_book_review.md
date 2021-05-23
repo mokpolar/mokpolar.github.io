@@ -2,7 +2,7 @@
 layout: post
 no_hidden: false
 title: 책 리뷰 - 처음 배우는 셸 스크립트
-summary: MinIO 오브젝트 스토리지를 하나의 노드에 그리고 4개의 노드에 분산형으로 설치해보았다...
+summary: 처음 배우는 셸 스크립트 도서에 대한 책 리뷰
 featured-img: shell_script
 categories: [Blog]
 author: mokpolar
