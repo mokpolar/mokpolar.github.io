@@ -35,12 +35,13 @@ Rook 오퍼레이터를 쿠버네티스에 배포하고 시작하면 된다.
 
 * 쿠버네티스 클러스터 - GKE를 사용했다. 최소 3개의 노드가 필요하다. 
 * GCE Persistent Disk - GKE에서 PVC로 동적으로 공간을 늘리려고 사용해봤다. 없어도 된다.
+* Rook version - 1.6.1
 
 ## 설치 과정
 
 ### Deploy the Rook Operator  
 
-먼저 Rook을 클론해오자. 
+먼저 Rook을 클론해오자. 1.6.1 버전 기준이다. 
 ```bash
 git clone --single-branch --branch v1.6.1 https://github.com/rook/rook.git
 cd rook/cluster/examples/kubernetes/ceph
