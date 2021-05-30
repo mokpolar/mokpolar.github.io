@@ -27,7 +27,7 @@ Ceph Cluster의 상태를 모니터링하기 위해 Ceph Dashboard를 설치하�
 Ceph shared file system을 이용하면 여러 Pod에 동시에 마운트해서 파일을 공유할 수 있도록 할 수 있다.   
 기존에 NFS 서버를 구축해서 PVC 형태로 Pod에 마운트해서 사용할 때는 동시에 다른 Pod에 마운트할 수가 없어서 불편했는데 Ceph shared file system을 사용하면 이런 부분이 해결된다.  
   
-  
+
 ### 준비물
 
 * 쿠버네티스에 설치된 Rook Ceph Cluster- [전 글 참조 - Ceph를 쿠버네티스에 설치해서 Object Storage로 사용하는 방법](https://mokpolar.github.io/ceph_storage_kubernetes/])
@@ -54,7 +54,7 @@ rook-ceph-mgr                          ClusterIP      10.120.3.237   <none>     
 rook-ceph-mgr-dashboard                ClusterIP      10.120.3.14    <none>            7000/TCP            45d
 ```
 
-그리고 외부에서 접근하기 위해 loadbalancer 형태로 서비스를 오픈해주어야 한다.   
+그리고 외부에서 접근하기 위해 서비스를 오픈해줘야 하는데,  GKE 환경을 사용하고 있어서 편리하게 loadbalancer 형태로 했다. 
 yaml 파일은 이렇게 생겼다.  
 
 ```yaml
