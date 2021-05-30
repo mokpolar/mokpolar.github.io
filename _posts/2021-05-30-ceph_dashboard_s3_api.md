@@ -1,7 +1,7 @@
 ---
 layout: post
 no_hidden: true
-title: 쿠버네티스에서 Ceph dashboard, CephFS 사용해 본 후기 (Ceph dashboard, CephFS on Kubernetes)
+title: 쿠버네티스에서 Ceph dashboard, CephFS 설치해 본 후기 (Ceph dashboard, CephFS on Kubernetes)
 summary: 지난 글에 이어 Ceph Dashboard와 CephFS를 설치해보겠다...
 featured-img: ceph
 categories: [Devlog]
