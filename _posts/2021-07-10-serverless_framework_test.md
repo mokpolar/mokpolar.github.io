@@ -25,6 +25,8 @@ Serverless Framework 는 서버리스 어플리케이션을 구성할 때 배포
 
 ## Serverless Framework의 장점은?
 
+배포와 관리를 쉽게 할 수 있도록 도와준다는데.. 뭘 어떻게?  
+
 GCP Cloud Function과 Azure Function을 써보지 않았으니 AWS Lambda를 기준으로 보면, 
 
 AWS Lambda 메뉴로 들어가서 이런 식으로 함수 생성으로 하고
